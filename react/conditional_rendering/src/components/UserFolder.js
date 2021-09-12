@@ -28,13 +28,13 @@ const UserForm =(props) => {
         setHasBeenSubmitted( true );
     };
     
-    // const formMessage = () => {
-    //     if( hasBeenSubmitted ) {
-	//         return "Thank you for submitting the form!";
-	//     } else {
-	//     return "Welcome, please submit the form";
-	//     }
-    // };
+    const formMessage = () => {
+        if( hasBeenSubmitted ) {
+	        return  <p  style={{color:"green"}}>"Hoorayyyyy, its submitted"</p>  ;
+	    } else {
+	    return <p style={{color:"red"}}> "Ohhhhhhhh, please submit the form"</p> ;
+	    }
+    };
     const handleValidation = (e) =>{
         setUsername(e.target.value)
 
@@ -49,10 +49,12 @@ const UserForm =(props) => {
     
     return (
         <form onSubmit={ createUser }>
+            <h3>{formMessage()}</h3>
+
             {
                 hasBeenSubmitted ?
-                <h3> Thank you for submitting the form!</h3> :
-                <h3> Wlcome! Please submit the form!</h3>
+                <h3 style={{color:"green"}}> Thank you for submitting the form!</h3> :
+                <h3 style={{color:"red"}}> Wlcome! Please submit the form!</h3>
             }
             <div>
                 <label>Username: </label>
