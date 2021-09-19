@@ -8,7 +8,7 @@ function App() {
   const [boxColorArr, setBoxColorArray] = useState([])
   return (
     <div className = "App">
-      <h1>Standard Assignment</h1>
+      <h1>Box Generator</h1>
       <UserInput boxColorArr={boxColorArr} setBoxColorArray={setBoxColorArray} />
       <Display  boxColorArray = {boxColorArr}/>
 
