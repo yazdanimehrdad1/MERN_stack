@@ -1,32 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 import React,{useEffect, useState} from 'react'
+import PokemonAPI from './components/PokemonAPI'
+import AxiosPokemanApi from './components/AxiosPokemanApi'
+import {Router, Link} from '@reach/router'
+
 
 function App() {
-  
-  const [pokemon, setPokemon] = useState([])
 
-  useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon/')
-    .then(response => response.json())
-    .then(response => setPokemon(response.results))
-    // return () => {
-    //   cleanup
-    // }
-  }, []);
-  
-  return (
-    <div className="App">
+  return(
 
-      <h1>List of Pokemon</h1>
 
-      {
-        pokemon.length>0 && pokemon.map((element,index)=>{
-          return( <p> Key={index}- {element.name}</p>)
-        })
-      }
-      
+    <div>
+      <Link to="/AXIOS">Go to Axios</Link>
 
+      <Router>  
+        <PokemonAPI path="/AJAX/"/>
+        <AxiosPokemanApi path="/AXIOS/" />
+      </Router>
     </div>
   );
 }

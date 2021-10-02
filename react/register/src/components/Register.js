@@ -9,7 +9,7 @@ const initialState={
     email:'',
     password:'',
     passwordConfirm:'',
-    termsAccepted:''
+    termsAccepted:'false'
 }
 
 function reducer(state, action){

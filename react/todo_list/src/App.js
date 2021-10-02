@@ -41,17 +41,12 @@ function App() {
 
 
   const handleToggleComplete = (index)=>{
-    const updatedTodos = todoArr.map( (newTodo,i)=>{
-      if(i===index){
-        // newTodo.complete = !newTodo.complete
+    const newtodo = {...todoArr[index]}
 
-        const updatedTodo = {...newTodo, complete: !newTodo.complete}
-        return updatedTodo
-      }
-      
-      // return newTodo;
-    } )
-    setTodoArr(updatedTodos)
+    newtodo.complete = !newtodo.complete
+
+    setTodoArr([...todoArr.slice(0,index),newtodo].concat(todoArr.slice(index+1)) )
+
   }
 
   return (
@@ -83,7 +78,8 @@ function App() {
           <div style={{border:" solid black", margin:"10px", padding:"20px"}} key={index}>
             
 
-            <p><input type="checkbox"
+            <p>
+              <input type="checkbox"
                       checked={newTodo.complete}
                       onChange={(e)=>{ handleToggleComplete(index)}} 
                ></input> 

@@ -27,6 +27,14 @@ function App() {
     console.log(skillToUpdate)
   }
 
+  const handleDeleteSkill = (index)=>{
+
+    const filteredArr = skillArr.filter( (element, idx) => idx !== index )
+
+    setSkillArr(filteredArr)
+    
+  }
+
   // console.log(skillArr)
 
 
@@ -46,6 +54,7 @@ function App() {
           <p>Skill: {element.skill}</p>
           <p>Level: {element.level}</p>
           <button onClick={() => handleIncreaseSkillLevel(index)}>Level Up</button>
+          <button onClick={()=>handleDeleteSkill(index) }>DELETE</button>
           <hr></hr>
           
         </div>
