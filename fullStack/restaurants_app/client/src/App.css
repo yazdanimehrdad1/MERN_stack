@@ -1,0 +1,27 @@
+
+/* @import '~bootstrap/scss/bootstrap.css'; */
+.error-text {
+    color: red;
+    font-size: 18px;
+  }
+  
+  .pink-text {
+    color: purple;
+  }
+  
+  .col-form-styling {
+    border: 1px solid black;
+  }
+  
+  .form-label {
+    display: block;
+  }
+  
+  #right-form-btn {
+    margin-left: 10px;
+  }
+  
+  .table-img {
+    height: 200px;
+    width: 200px;
+  }
