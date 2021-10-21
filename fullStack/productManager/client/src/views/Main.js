@@ -11,6 +11,12 @@ const Main = ()=>{
     const [people, setPeople] = useState([])
 
 
+    const sortItems = (peopleList)=>{
+
+        return peopleList.sort((a, b) => (a.firstName.toLowerCase() > b.firstName.toLowerCase()) ? 1 : -1)
+    }
+
+
     useEffect(() => {
         axios.get("http://localhost:8000/api")
         .then( res => setMessage(res.data.message))
@@ -19,9 +25,13 @@ const Main = ()=>{
     useEffect(() => {
         axios.get("http://localhost:8000/api/people")
         .then(res=>{
-            setPeople(res.data);
+            const sortedPeople = sortItems(res.data)
+            setPeople(sortedPeople)
+            // setPeople( prev=>[...prev,...sortedPeople]);
             setLoaded(true)
+
         })
+    
 
     }, [])
 

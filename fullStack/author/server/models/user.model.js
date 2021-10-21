@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const uniqueValidator = require('mongoose-unique-validator');
+// UserSchema.plugin(uniqueValidator);
 
 
 const UserSchema = new mongoose.Schema({
@@ -14,6 +16,7 @@ const UserSchema = new mongoose.Schema({
     email: {
       type: String,
       required: [true, "Email is required"],
+      unique:[true, "email must be unique"],
       validate: {
 
         validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
@@ -29,6 +32,7 @@ const UserSchema = new mongoose.Schema({
   }, {timestamps: true});
   
 
+  UserSchema.plugin(uniqueValidator);
   // add this after UserSchema is defined
 UserSchema.virtual('confirmPassword')
 .get( () => this._confirmPassword )
@@ -42,5 +46,38 @@ UserSchema.pre('validate', function(next) {
     }
     next();
   });
+
+
+  UserSchema.pre('save', function(next) {
+    bcrypt.hash(this.password, 10)
+      .then(hash => {
+        this.password = hash;
+        next();
+      });
+  });
+
   
-  module.exports = User = mongoose.model("User", UserSchema)
+
+
+
+
+// UserSchema.pre("validate", function(next) {
+//     var self = this;
+
+//     User.findOne({email : this.email}, function(err, results) {
+//         if(err) {
+//             next(err);
+//         } else if(results) {
+//             console.log('results', results);
+//             self.invalidate("email", "email must be unique");
+//             next(new Error("email must be unique"));
+//         } else {
+//             next();
+//         }
+//     });
+// });
+
+
+  
+const User = mongoose.model("User", UserSchema);
+module.exports = User;

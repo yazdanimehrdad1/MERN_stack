@@ -1,5 +1,7 @@
 const ProjectController = require('../controllers/project.controller');
 const UserController = require('../controllers/user.controller')
+const { authenticate } = require("../config/jwt.config")
+
 
 module.exports= function(app){
     app.get("/api/health",ProjectController.index );
@@ -10,5 +12,4 @@ module.exports= function(app){
     app.delete("/api/project/:id", ProjectController.deleteOne);
 
 
-    app.post("/register", UserController.register)
 }

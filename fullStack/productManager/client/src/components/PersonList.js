@@ -1,6 +1,17 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 const PersonList = (props)=>{
+    console.log("props", props)
+    // const [people, setPeople] = useState([])
+    const sortItems = (peopleList)=>{
+
+        return peopleList.sort((a, b) => (a.firstName > b.firstName) ? 1 : -1)
+    }
+    // const sortedPeople = sortItems( people)
+    // setPeople(sortedPeople)
+
+  
+
     
     return(
         <div>

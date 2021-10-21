@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {Link, navigate} from '@reach/router'
-import { set } from 'mongoose'
+
 
 const DisplayAll = (props)=>{
 
